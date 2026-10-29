@@ -74,6 +74,15 @@ h3.sub{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--
 
 footer{margin-top:48px;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
+@media (prefers-color-scheme:dark){
+  .thumb img,.teach img{filter:brightness(.9)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .paper{transition:none}
+  .paper:hover{transform:none}
+}
+
 @media (max-width:680px){
   .hero{grid-template-columns:1fr;padding-top:36px}
   .hero img{order:-1;width:150px;height:150px}

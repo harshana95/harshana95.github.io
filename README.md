@@ -1,1 +1,7 @@
-This is the source code to Jon Barron's public academic website: https://jonbarron.info/. You are welcome to clone this code for your own personal use, just please attribute the source to the original website or to this repo. If you do clone this website, feel free to add an attribution link to your own downstream website in index.html if you want.
+# harshana95.github.io
+
+Personal academic website of Harshana Weligampola, served with GitHub Pages at https://harshana95.github.io/.
+
+It is a static site: `index.html` and `site.css`, with figures in `images/` and PDFs (CV, abstracts) in `data/`. To preview locally, run `python3 -m http.server` in this folder and open http://localhost:8000.
+
+The layout is based on [Jon Barron's website template](https://github.com/jonbarron/jonbarron_website).
