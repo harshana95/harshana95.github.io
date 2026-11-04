@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harshana Weligampola · Introduction</title>
+  <meta name="author" content="Harshana Weligampola">
+  <meta name="description" content="A one-minute introduction to Harshana Weligampola: computational imaging, metasurface optics and generative models.">
+  <link rel="canonical" href="https://harshana95.github.io/pitch.html">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harshana95.github.io/pitch.html">
+  <meta property="og:title" content="Harshana Weligampola · Introduction">
+  <meta property="og:description" content="I build cameras that see more with less: metasurface optics co-designed with generative models.">
+  <meta property="og:image" content="https://harshana95.github.io/images/harshana.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    html,body{height:100%}
+    body{overflow:hidden}
+    .stage{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0}
+    .slide{position:absolute;inset:0;padding:64px 80px 84px;display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .35s,transform .35s,visibility 0s .35s}
+    .slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .35s,transform .35s}
+    .slide aside{display:none}
+
+    .kicker{font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+    .slide h1{font-size:68px;line-height:1.05;letter-spacing:-.03em;margin:0 0 18px}
+    .slide h2{font-size:44px;line-height:1.15;letter-spacing:-.02em;margin:0 0 36px;display:block}
+    .slide h2::after{display:none}
+    .lead{font-size:30px;line-height:1.3;font-weight:600;margin:0 0 28px}
+    .meta{font-size:19px;color:var(--muted);margin:0}
+    .slide .badge{font-size:15px;margin-bottom:22px}
+
+    .title{display:grid;grid-template-columns:1fr 300px;gap:64px;align-items:center}
+    .title img{width:300px;height:300px;border-radius:50%;object-fit:cover;border:6px solid var(--card);box-shadow:var(--shadow)}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+    .card h3{font-size:22px;margin:0 0 10px}
+    .card p{font-size:17px;line-height:1.5;margin:0;color:var(--muted)}
+    .card ul{margin:0;padding-left:20px;font-size:17px;line-height:1.55;color:var(--muted)}
+    .card .n{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;margin-bottom:14px}
+    .card.hl{border-color:var(--accent);background:var(--accent-soft)}
+    .card.hl p{color:var(--text)}
+
+    .feature{display:grid;grid-template-columns:1.15fr 1fr;gap:22px}
+    .feature .card{padding:22px}
+    .fig{background:#fff;border-radius:10px;overflow:hidden;margin-bottom:14px;display:flex;align-items:center;justify-content:center}
+    .fig img{width:100%;display:block;object-fit:contain}
+    .big .fig img{height:230px}
+    .side{display:grid;gap:22px}
+    .side .card{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center}
+    .side .fig{margin:0}
+    .side .fig img{height:100px}
+    .card .venue{font-size:14px;font-weight:600;color:var(--accent);margin:0 0 4px}
+    .card h4{font-size:18px;line-height:1.3;margin:0 0 6px}
+    .stats{display:flex;gap:28px;margin-top:12px}
+    .stats b{display:block;font-size:30px;letter-spacing:-.02em;color:var(--accent)}
+    .stats span{font-size:14px;color:var(--muted)}
+
+    .tline{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative}
+    .tline .when{font-size:15px;font-weight:600;color:var(--muted);margin-bottom:6px}
+    .tline .card h3{margin-bottom:4px}
+    .tline .card .org{font-size:16px;color:var(--accent);font-weight:600;margin:0 0 12px}
+
+    .chips{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 40px}
+    .chips span{font-size:19px;font-weight:500;padding:10px 20px;border-radius:99px;border:1px solid var(--line);background:var(--card)}
+    .contact{display:flex;flex-wrap:wrap;gap:12px}
+    .contact .btn{font-size:18px;padding:11px 22px;border-radius:10px}
+
+    .bar{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:14px;color:var(--muted);z-index:5}
+    .bar .home{margin-right:auto;color:var(--muted)}
+    .bar button{font:inherit;font-weight:500;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+    .bar button:hover{border-color:var(--accent);color:var(--accent)}
+    .bar button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+    .count{font-variant-numeric:tabular-nums;min-width:48px;text-align:center}
+    .progress{position:fixed;left:0;top:0;height:3px;background:var(--accent);transition:width .35s;z-index:5}
+    .notes{position:fixed;left:16px;right:16px;bottom:58px;max-width:900px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:14px 18px;font-size:16px;line-height:1.55;z-index:5}
+    .notes b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+    .notes[hidden]{display:none}
+
+    @media (prefers-color-scheme:dark){.fig img{filter:brightness(.9)}}
+    @media (prefers-reduced-motion:reduce){.slide,.slide.active,.progress{transition:none;transform:none}}
+
+    /* Phones: show every slide as a stacked card instead of a scaled deck */
+    @media (max-width:760px){
+      body{overflow:auto}
+      .stage{position:static;width:auto;height:auto;transform:none!important;padding:16px 16px 8px}
+      .slide{position:relative;inset:auto;opacity:1;visibility:visible;transform:none;padding:28px 0;border-bottom:1px solid var(--line)}
+      .slide aside{display:block;margin-top:18px;font-size:15px;line-height:1.55;color:var(--muted);border-left:3px solid var(--accent-soft);padding-left:12px}
+      .slide aside::before{content:"Script";display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+      .slide h1{font-size:40px}
+      .slide h2{font-size:28px;margin-bottom:20px}
+      .lead{font-size:22px}
+      .meta{font-size:16px}
+      .title{grid-template-columns:1fr;gap:20px}
+      .title img{order:-1;width:140px;height:140px}
+      .cards,.feature,.tline{grid-template-columns:1fr;gap:14px}
+      .side .card{grid-template-columns:1fr}
+      .big .fig img,.side .fig img{height:auto}
+      .stats{gap:18px}
+      .stats b{font-size:22px}
+      .chips span{font-size:15px}
+      .contact .btn{font-size:15px}
+      .bar{position:static;justify-content:center;padding:16px}
+      .bar button,.bar .count,.progress,.notes{display:none}
+      .bar .home{margin:0}
+    }
+
+    @media print{
+      @page{size:1280px 720px;margin:0}
+      body{overflow:visible}
+      .stage{position:static;transform:none!important}
+      .slide{position:relative;height:720px;opacity:1;visibility:visible;transform:none;break-after:page}
+      .bar,.progress,.notes{display:none!important}
+    }
+  </style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<main class="stage" aria-live="polite">
+
+  <section class="slide">
+    <div class="title">
+      <div>
+        <span class="badge">Seeking research roles · starting early 2027</span>
+        <h1>Harshana Weligampola</h1>
+        <p class="lead">I build cameras that see more with less.</p>
+        <p class="meta">Ph.D. candidate, Electrical &amp; Computer Engineering · Purdue University<br>Advised by Prof. Stanley Chan and Prof. Qi Guo</p>
+      </div>
+      <img src="images/harshana_circle.webp" alt="Harshana Weligampola">
+    </div>
+    <aside>Hi, I'm Harshana Weligampola, a Ph.D. candidate in Electrical and Computer Engineering at Purdue, advised by Stanley Chan and Qi Guo. In one line: I build cameras that see more with less.</aside>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">The problem</p>
+    <h2>Sharp images need big lenses.<br>I make thin optics that still deliver.</h2>
+    <div class="cards">
+      <div class="card"><span class="n">1</span><h3>Lenses are bulky</h3><p>High-quality zoom and telephoto imaging relies on long, heavy stacks of glass, which do not fit in thin devices.</p></div>
+      <div class="card"><span class="n">2</span><h3>Flat optics are imperfect</h3><p>Metasurfaces shrink a lens to a thin nanostructured layer, but the images they form are blurry and color-distorted.</p></div>
+      <div class="card hl"><span class="n">3</span><h3>Co-design closes the gap</h3><p>I design the optics together with a generative model that knows what real images look like, so software recovers what the hardware gives up.</p></div>
+    </div>
+    <aside>Sharp zoom photos today need long, heavy lenses. Metasurfaces, flat nanostructured optics, can shrink a lens to a thin layer, but the raw images are blurry and color-shifted. My work closes that gap by designing the optics and the reconstruction algorithm together.</aside>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">What I work across</p>
+    <h2>From photons to pixels, end to end</h2>
+    <div class="cards">
+      <div class="card"><h3>Optics</h3><ul><li>Metasurface and refractive lens systems</li><li>Physics-based image formation</li><li>Optical aberration correction</li></ul></div>
+      <div class="card"><h3>Generative models</h3><ul><li>Diffusion and flow matching</li><li>One-step and dual-branch diffusion</li><li>Foundation-model image priors</li></ul></div>
+      <div class="card"><h3>Camera pipelines</h3><ul><li>RAW and burst processing</li><li>Multi-frame super-resolution</li><li>Extreme low-light enhancement</li></ul></div>
+    </div>
+    <aside>I work across the whole stack: the optics, the generative models, and the camera pipeline that connects them, from RAW bursts to the final image.</aside>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">Selected results</p>
+    <h2>Recent work</h2>
+    <div class="feature">
+      <div class="card big">
+        <div class="fig"><img src="images/metatele_teaser.webp" alt="MetaTele camera and reconstructions"></div>
+        <p class="venue">Optics Express 2026</p>
+        <h4>MetaTele: a compact metasurface telephoto camera</h4>
+        <div class="stats">
+          <div><b>0.44</b><span>telephoto ratio</span></div>
+          <div><b>20–50 mm</b><span>continuous zoom</span></div>
+          <div><b>1-step</b><span>diffusion reconstruction</span></div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="card"><div class="fig"><img src="images/icassp_fig.webp" alt="Diffusion for metalens aberration correction"></div><div><p class="venue">ICASSP 2026 · Oral</p><h4>Diffusion algorithm for metalens aberration correction</h4></div></div>
+        <div class="card"><div class="fig"><img src="images/genmfsr_teaser.webp" alt="GenMFSR results"></div><div><p class="venue">CVPR Workshops 2026</p><h4>GenMFSR: generative multi-frame RAW super-resolution</h4></div></div>
+      </div>
+    </div>
+    <aside>Recent results: MetaTele, in Optics Express, is a telephoto camera less than half as long as its focal length, with continuous 20 to 50 millimeter zoom, reconstructed by a one-step diffusion model. I presented a diffusion method for metalens aberration correction as an oral at ICASSP 2026. And GenMFSR, at CVPR Workshops, brings generative priors to multi-frame RAW super-resolution.</aside>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">Industry experience</p>
+    <h2>Research in industry labs</h2>
+    <div class="tline">
+      <div class="card"><div class="when">2019</div><h3>A.I. Research Intern</h3><p class="org">Nokia Bell Labs · Antwerp</p><p>Deep learning for the physical layer of mobile networks under latency constraints. Published in IEEE Access.</p></div>
+      <div class="card"><div class="when">2025</div><h3>Research Intern</h3><p class="org">Samsung Research America · Dallas</p><p>Efficient burst RAW super-resolution with foundation image models. Became GenMFSR, CVPRW 2026.</p></div>
+      <div class="card hl"><div class="when">2026</div><h3>Research Intern</h3><p class="org">Samsung Research America · Dallas</p><p>Extreme low-light image enhancement using flow matching models.</p></div>
+    </div>
+    <aside>I've also done research in industry: two internships at Samsung Research America, on generative burst super-resolution in 2025, which became a CVPR workshop paper, and on extreme low-light enhancement with flow matching in 2026. Before my Ph.D. I interned at Nokia Bell Labs on deep learning for mobile networks.</aside>
+  </section>
+
+  <section class="slide">
+    <p class="kicker">What I'm looking for</p>
+    <h2>Research roles starting early 2027</h2>
+    <div class="chips"><span>Computational photography</span><span>Optics–algorithm co-design</span><span>Generative image restoration</span><span>Camera and imaging pipelines</span></div>
+    <div class="contact">
+      <a class="btn primary" href="mailto:wweligam@purdue.edu">wweligam@purdue.edu</a>
+      <a class="btn" href="./">Website</a>
+      <a class="btn" href="data/CV.pdf">CV</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=iDfndVYAAAAJ&amp;hl=en">Google Scholar</a>
+      <a class="btn" href="https://github.com/harshana95/">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/harshanasumedha/">LinkedIn</a>
+    </div>
+    <aside>I'm looking for research roles starting early 2027, where optics, cameras and generative models meet. I'd love to talk about how this could help your team.</aside>
+  </section>
+
+</main>
+
+<div class="notes" hidden><b>Script</b><span></span></div>
+
+<div class="bar">
+  <a class="home" href="./">← harshana95.github.io</a>
+  <button type="button" class="notes-btn" aria-pressed="false" title="Speaker script (N)">Script</button>
+  <button type="button" class="prev" aria-label="Previous slide">←</button>
+  <span class="count"></span>
+  <button type="button" class="next" aria-label="Next slide">→</button>
+  <button type="button" class="fs" title="Full screen (F)">Full screen</button>
+</div>
+
+<script>
+(function(){
+  var stage=document.querySelector('.stage'),slides=[].slice.call(document.querySelectorAll('.slide')),
+      count=document.querySelector('.count'),progress=document.querySelector('.progress'),
+      notes=document.querySelector('.notes'),notesBtn=document.querySelector('.notes-btn'),
+      stacked=matchMedia('(max-width:760px)'),i=0;
+
+  function fit(){
+    if(stacked.matches){stage.style.transform='';return}
+    var h=innerHeight-48-(notes.hidden?0:notes.offsetHeight+10),s=Math.min(innerWidth/1280,h/720);
+    stage.style.transform='translate('+(innerWidth-1280*s)/2+'px,'+Math.max(0,(h-720*s)/2)+'px) scale('+s+')';
+  }
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i);s.setAttribute('aria-hidden',k!==i&&!stacked.matches)});
+    count.textContent=(i+1)+' / '+slides.length;
+    progress.style.width=((i+1)/slides.length*100)+'%';
+    notes.querySelector('span').textContent=slides[i].querySelector('aside').textContent;
+    history.replaceState(null,'','#'+(i+1));
+  }
+  function toggleNotes(){notes.hidden=!notes.hidden;notesBtn.setAttribute('aria-pressed',!notes.hidden);fit()}
+  function fullscreen(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}
+
+  document.querySelector('.prev').onclick=function(){go(i-1)};
+  document.querySelector('.next').onclick=function(){go(i+1)};
+  notesBtn.onclick=toggleNotes;
+  document.querySelector('.fs').onclick=fullscreen;
+  addEventListener('keydown',function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey||stacked.matches)return;
+    var k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();go(i+1)}
+    else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();go(i-1)}
+    else if(k==='Home')go(0);
+    else if(k==='End')go(slides.length-1);
+    else if(k==='n'||k==='N')toggleNotes();
+    else if(k==='f'||k==='F')fullscreen();
+  });
+  var x0=null;
+  addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  addEventListener('touchend',function(e){
+    if(x0===null||stacked.matches)return;
+    var dx=e.changedTouches[0].clientX-x0;x0=null;
+    if(Math.abs(dx)>50)go(i+(dx<0?1:-1));
+  });
+  addEventListener('resize',fit);
+  stacked.addEventListener('change',function(){fit();go(i)});
+  fit();
+  go((parseInt(location.hash.slice(1),10)||1)-1);
+})();
+</script>
+</body>
+</html>
